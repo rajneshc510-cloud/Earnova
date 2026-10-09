@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071426">
+<title>Earnova — Tasks & Rewards</title>
+<style>
+:root{--bg:#071426;--panel:#101f35;--panel2:#142844;--line:#263c59;--text:#f4f7ff;--muted:#a7b7ce;--blue:#4f8cff;--cyan:#62d8ff;--gold:#ffd166;--green:#54d6a0;--red:#ff8585}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#10284a 0,#071426 48%);color:var(--text);font:15px/1.5 Inter,system-ui,Arial,sans-serif;padding-bottom:90px}
+button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:11px 15px;background:linear-gradient(135deg,var(--blue),#3867dc);color:white;font-weight:700}button:disabled{opacity:.45;cursor:not-allowed}.secondary{background:#1a2e49;border:1px solid var(--line);color:var(--text)}.ghost{background:transparent;border:1px solid var(--line);color:var(--muted)}.danger{background:#4b2534;border:1px solid #784054}.wrap{max-width:1000px;margin:auto;padding:0 16px}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 0;gap:12px}.brand{display:flex;gap:10px;align-items:center}.logo{width:43px;height:43px;border-radius:14px;background:linear-gradient(135deg,#67e8f9,#4779ff 60%,#ffcf70);display:grid;place-items:center;color:#061327;font-size:23px;font-weight:1000;box-shadow:0 8px 25px #3979ff30}.brandname{font-size:23px;font-weight:900;letter-spacing:-.7px}.tag{font-size:10px;letter-spacing:1.5px;color:var(--muted)}.user-chip{border:1px solid var(--line);background:#102039;padding:8px 12px;border-radius:999px;font-size:12px;color:var(--muted)}
+.page{display:none}.page.active{display:block}.eyebrow{color:var(--cyan);font-size:12px;text-transform:uppercase;letter-spacing:1.5px;font-weight:800}.title{font-size:clamp(25px,5vw,34px);line-height:1.15;margin:7px 0 8px;letter-spacing:-1px}.muted{color:var(--muted)}.small{font-size:12px}.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:15px;margin:10px 0 18px}.balance-card{background:linear-gradient(135deg,#1c56a3,#17386e 55%,#162744);border:1px solid #4776b5;border-radius:24px;padding:24px;position:relative;overflow:hidden;min-height:210px}.balance-card:after{content:"";position:absolute;width:190px;height:190px;border:1px solid #ffffff1d;border-radius:50%;right:-55px;top:-65px;box-shadow:0 0 0 25px #ffffff08,0 0 0 50px #ffffff05}.balance-label{color:#d4e6ff;font-size:13px}.balance{font-size:39px;font-weight:900;margin:8px 0 14px;letter-spacing:-1px}.balance-actions{display:flex;gap:9px;flex-wrap:wrap}.balance-actions button{font-size:12px}.mini-stat{background:linear-gradient(145deg,#132844,#0d1c31);border:1px solid var(--line);border-radius:22px;padding:21px;display:flex;flex-direction:column;justify-content:space-between}.stat-icon{font-size:25px}.stat-number{font-size:25px;font-weight:850}.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:24px 0 13px}.section-head h2{margin:0;font-size:18px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.card{background:linear-gradient(145deg,#12233a,#0e1c30);border:1px solid var(--line);border-radius:18px;padding:17px;min-width:0}.feature-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:#203b61;font-size:21px;margin-bottom:12px}.card h3{margin:0 0 5px;font-size:15px}.card p{margin:0;color:var(--muted);font-size:13px}.task-list{display:grid;gap:11px}.task-row{display:flex;align-items:center;gap:13px}.task-row .feature-icon{flex-shrink:0;margin:0}.task-info{flex:1;min-width:0}.task-info h3{margin:0 0 3px}.reward{color:var(--gold);font-size:13px;font-weight:800;white-space:nowrap}.row-actions{display:flex;gap:8px;align-items:center}.notice{padding:13px 15px;border:1px solid #6b572b;background:#2a2418;color:#f4d99a;border-radius:14px;font-size:12px;margin:15px 0}.success{border-color:#24654e;background:#102c27;color:#9ce8c5}.form-card{max-width:540px;margin:15px auto}.field{display:grid;gap:6px;margin:13px 0}.field label{font-size:13px;color:#d5e1f2}.field input,.field select{width:100%;background:#09172a;color:white;border:1px solid #304662;border-radius:11px;padding:12px 13px;outline:none}.field input:focus,.field select:focus{border-color:var(--blue)}.full{width:100%}.tabs{display:flex;gap:8px;margin:12px 0}.tabs button{flex:1}.history-item{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}.history-item:last-child{border-bottom:0}.positive{color:var(--green)}.negative{color:var(--red)}.profile-head{display:flex;align-items:center;gap:14px;margin:20px 0}.avatar{height:58px;width:58px;border-radius:19px;display:grid;place-items:center;background:linear-gradient(135deg,#2459a5,#162b4b);font-size:25px}.ad-slot{border:1px dashed #4b6689;border-radius:16px;padding:20px;text-align:center;background:#0d1c30;color:var(--muted)}.ad-slot strong{display:block;color:#dce9ff;margin-bottom:5px}.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:5;background:#081526f2;backdrop-filter:blur(15px);border-top:1px solid var(--line);display:flex;justify-content:center;padding:8px max(8px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom));}.nav-inner{width:min(100%,700px);display:grid;grid-template-columns:repeat(5,1fr);gap:4px}.nav-btn{background:transparent;color:var(--muted);padding:7px 2px;font-size:11px;border-radius:12px}.nav-btn span{display:block;font-size:19px;margin-bottom:2px}.nav-btn.active{background:#17345a;color:#81bdff}.empty{padding:22px;text-align:center;color:var(--muted)}.footer{text-align:center;color:#71839e;font-size:11px;padding:24px 0 10px}
+@media(max-width:650px){.hero{grid-template-columns:1fr}.mini-stat{min-height:125px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.balance{font-size:34px}.card{padding:14px}.task-row{flex-wrap:wrap}.task-info{min-width:calc(100% - 65px)}.row-actions{width:100%;padding-left:55px}.row-actions button{flex:1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div class="brand"><div class="logo">E</div><div><div class="brandname">Earnova</div><div class="tag">TASKS · REWARDS · EARN</div></div></div><div class="user-chip" id="headerUser">Guest account</div></header>
+
+<section id="home" class="page active">
+<div class="eyebrow">Your rewards dashboard</div><h1 class="title">कमाई की नई शुरुआत ✨</h1><p class="muted">टास्क देखें, अपनी प्रगति ट्रैक करें और रिवॉर्ड की जानकारी पाएँ।</p>
+<div class="hero"><div class="balance-card"><div class="balance-label">Demo wallet balance</div><div class="balance">₹<span id="homeBalance">0.00</span></div><div class="balance-actions"><button onclick="navigate('wallet')">वॉलेट खोलें →</button><button class="secondary" onclick="navigate('tasks')">टास्क देखें</button></div><p class="small" style="color:#d1e2ff;margin-top:16px">डेमो बैलेंस — वास्तविक पैसे नहीं</p></div>
+<div class="mini-stat"><div class="stat-icon">🏁</div><div><div class="muted small">इस डेमो में पूरे किए टास्क</div><div class="stat-number" id="taskCount">0</div><div class="muted small">स्थानीय डिवाइस पर सेव</div></div></div></div>
+<div class="section-head"><h2>कमाई के तरीके</h2><span class="muted small">Explore</span></div>
+<div class="grid">
+<div class="card"><div class="feature-icon">📋</div><h3>Task Center</h3><p>डेमो टास्क और स्टेटस देखें।</p><button class="full" style="margin-top:13px" onclick="navigate('tasks')">टास्क खोलें</button></div>
+<div class="card"><div class="feature-icon">🎁</div><h3>Daily Check-in</h3><p>चेक-इन फीचर का प्रीव्यू।</p><button class="full secondary" style="margin-top:13px" onclick="checkin()">Check-in</button></div>
+<div class="card"><div class="feature-icon">👥</div><h3>Refer & Earn</h3><p>रेफरल कोड कॉपी करें।</p><button class="full secondary" style="margin-top:13px" onclick="navigate('refer')">रेफर खोलें</button></div>
+</div>
+<div class="section-head"><h2>Sponsored area</h2></div><div class="ad-slot"><strong>विज्ञापन स्लॉट का प्रीव्यू</strong>यह असली विज्ञापन नहीं है। विज्ञापन नेटवर्क जोड़ने पर ही विज्ञापन से कमाई संभव होगी।</div>
+<div class="notice">पारदर्शिता: इस शुरुआती संस्करण में कोई वास्तविक कमाई, भुगतान, विज्ञापन या सर्वर-आधारित अकाउंट सक्रिय नहीं है।</div>
+</section>
+
+<section id="tasks" class="page"><div class="eyebrow">Earn rewards</div><h1 class="title">Tasks & Earn</h1><p class="muted">ये नमूना टास्क हैं। इन्हें पूरा करने से पैसे नहीं मिलते।</p><div class="notice">सुरक्षा के लिए डेमो रिवॉर्ड केवल इस ब्राउज़र में दिखते हैं। इन्हें असली बैलेंस या विड्रॉल के लिए इस्तेमाल नहीं किया जा सकता।</div><div class="task-list" id="taskList"></div></section>
+
+<section id="wallet" class="page"><div class="eyebrow">Your wallet</div><h1 class="title">Wallet & Activity</h1><div class="balance-card" style="margin:18px 0"><div class="balance-label">Demo balance</div><div class="balance">₹<span id="walletBalance">0.00</span></div><div class="small" style="color:#d1e2ff">कोई वास्तविक धनराशि जमा नहीं है।</div></div><div class="card"><h3>Withdrawal request</h3><p style="margin:5px 0 12px">इस प्रीव्यू में वास्तविक भुगतान उपलब्ध नहीं है। UPI ID दर्ज करने की जरूरत नहीं है।</p><button class="full" onclick="alert('यह केवल UI प्रीव्यू है। कोई भुगतान या रिक्वेस्ट नहीं भेजी गई।')">Withdrawal UI प्रीव्यू</button></div><div class="section-head"><h2>Activity history</h2><button class="ghost" onclick="clearDemo()">Reset demo</button></div><div class="card" id="history"><div class="empty">अभी कोई डेमो गतिविधि नहीं।</div></div></section>
+
+<section id="refer" class="page"><div class="eyebrow">Invite friends</div><h1 class="title">Refer & Earn</h1><div class="card" style="margin-top:18px"><div class="feature-icon">🎁</div><h3>अपना डेमो रेफरल कोड</h3><p>रेफरल ट्रैकिंग और रिवॉर्ड सर्वर से कनेक्ट नहीं हैं।</p><div class="field"><label>Referral code</label><input id="refCode" value="EARNOVA-DEMO" readonly></div><button class="full" onclick="copyReferral()">कोड कॉपी करें</button></div><div class="notice">यह कोड किसी यूज़र को ट्रैक नहीं करता और इससे कोई वास्तविक रेफरल भुगतान नहीं होता।</div></section>
+
+<section id="profile" class="page"><div class="eyebrow">Your account</div><h1 class="title">Profile</h1><div class="profile-head"><div class="avatar">👤</div><div><h2 id="profileName" style="margin:0">Guest User</h2><div class="muted small">Local demo profile</div></div></div><div class="card"><h3>Display name</h3><div class="field"><label>नाम</label><input id="nameInput" maxlength="40" placeholder="अपना नाम लिखें"></div><button class="full" onclick="saveName()">नाम सेव करें</button><div class="field"><label>Account status</label><input value="Demo only — no login connected" readonly></div></div><div class="section-head"><h2>Settings</h2></div><div class="card"><button class="secondary full" onclick="clearDemo()">डेमो डेटा रीसेट करें</button></div><div class="notice">वास्तविक लॉगिन बनाने के लिए सुरक्षित authentication backend की जरूरत है। पासवर्ड को इस HTML फ़ाइल या ब्राउज़र स्टोरेज में सेव न करें।</div></section>
+<div class="footer">Earnova • UI starter template • Demo only</div>
+</div>
+<nav class="bottom-nav"><div class="nav-inner">
+<button class="nav-btn active" data-page="home" onclick="navigate('home')"><span>⌂</span>Home</button>
+<button class="nav-btn" data-page="tasks" onclick="navigate('tasks')"><span>☷</span>Tasks</button>
+<button class="nav-btn" data-page="wallet" onclick="navigate('wallet')"><span>▣</span>Wallet</button>
+<button class="nav-btn" data-page="refer" onclick="navigate('refer')"><span>♧</span>Refer</button>
+<button class="nav-btn" data-page="profile" onclick="navigate('profile')"><span>♙</span>Profile</button>
+</div></nav>
+<script>
+const taskData=[
+{id:'welcome',icon:'👋',title:'Explore the dashboard',desc:'Earnova के अलग-अलग सेक्शन देखें',reward:5},
+{id:'learn',icon:'📘',title:'Read reward safety tips',desc:'डेमो टास्क: रिवॉर्ड नियम पढ़ें',reward:8},
+{id:'profile',icon:'🧑',title:'Set your display name',desc:'Profile में अपना नाम सेव करें',reward:4}
+];
+let state={balance:0,completed:[],history:[],name:'Guest User',checkin:false};
+try{const saved=JSON.parse(localStorage.getItem('earnova_demo_v1'));if(saved&&typeof saved==='object')state={...state,...saved};}catch(e){}
+function persist(){try{localStorage.setItem('earnova_demo_v1',JSON.stringify(state));}catch(e){}render();}
+function fmt(n){return Number(n||0).toFixed(2)}
+function render(){
+document.getElementById('homeBalance').textContent=fmt(state.balance);
+document.getElementById('walletBalance').textContent=fmt(state.balance);
+document.getElementById('taskCount').textContent=state.completed.length;
+document.getElementById('profileName').textContent=state.name||'Guest User';
+document.getElementById('headerUser').textContent=state.name||'Guest account';
+document.getElementById('nameInput').value=state.name==='Guest User'?'':state.name;
+const list=document.getElementById('taskList');
+list.innerHTML='';
+taskData.forEach(t=>{const done=state.completed.includes(t.id);const row=document.createElement('div');row.className='card task-row';row.innerHTML=`<div class="feature-icon">${t.icon}</div><div class="task-info"><h3>${t.title}</h3><p>${t.desc}</p></div><div class="row-actions"><span class="reward">+₹${fmt(t.reward)} demo</span><button ${done?'disabled':''} onclick="completeTask('${t.id}')">${done?'Done ✓':'Complete'}</button></div>`;list.appendChild(row);});
+const history=document.getElementById('history');
+if(!state.history.length){history.innerHTML='<div class="empty">अभी कोई डेमो गतिविधि नहीं।</div>';}else{history.innerHTML=state.history.slice().reverse().map(h=>`<div class="history-item"><div><strong>${h.title}</strong><div class="muted small">${h.time}</div></div><strong class="positive">+₹${fmt(h.amount)}</strong></div>`).join('');}
+}
+function navigate(id){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===id));window.scrollTo({top:0,behavior:'smooth'});}
+function completeTask(id){if(state.completed.includes(id))return;const t=taskData.find(x=>x.id===id);if(!t)return;state.completed.push(id);state.balance+=t.reward;state.history.push({title:t.title+' (DEMO)',amount:t.reward,time:new Date().toLocaleString()});persist();alert('डेमो टास्क पूरा हुआ। दिखाया गया रिवॉर्ड वास्तविक पैसा नहीं है।');}
+function checkin(){if(state.checkin){alert('आज का डेमो check-in पहले ही किया जा चुका है।');return;}state.checkin=true;alert('Check-in UI प्रीव्यू। कोई वास्तविक रिवॉर्ड नहीं जोड़ा गया।');persist();}
+function saveName(){const n=document.getElementById('nameInput').value.trim();if(!n){alert('कृपया नाम लिखें।');return;}state.name=n;persist();alert('नाम इस ब्राउज़र में सेव हो गया। यह सर्वर अकाउंट नहीं है।');}
+function copyReferral(){const v=document.getElementById('refCode').value;if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(()=>alert('डेमो कोड कॉपी हुआ।')).catch(()=>alert('कोड: '+v));}else{document.getElementById('refCode').select();try{document.execCommand('copy');}catch(e){}alert('डेमो कोड: '+v);}}
+function clearDemo(){if(!confirm('क्या आप इस ब्राउज़र का Earnova डेमो डेटा रीसेट करना चाहते हैं?'))return;state={balance:0,completed:[],history:[],name:'Guest User',checkin:false};persist();alert('डेमो डेटा रीसेट हो गया।');}
+render();
+</script>
+</body>
+</html>
